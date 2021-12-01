@@ -1,0 +1,43 @@
+Test 1a (Gaussian Kernel):
+input:
+x1 = [3 2]; x2 = [-3 0]; sigma = 7;
+sim = gaussianKernel(x1, x2, sigma)
+
+output:
+sim =  0.66487
+
+
+---------------------------------------
+Test 2a - Helpful tips for dataset3Params()
+{CTA Note: This isn't a unit test. It provides some tips for how to calculate the 
+prediction error for a dataset given values for C and sigma.}
+
+Enter these commands in your console and verify you get the same results.
+You can use this same method for the dataset3Params() function, by obtaining C and sigma from a list of values, and saving the C and sigma values that give you a new minimum error.
+load('ex6data3.mat');
+C = 3;
+sigma = 0.3;
+model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+pred = svmPredict(model, Xval);
+err = mean(double(pred != yval))
+Your value for err should be 0.075
+
+---------------------------------------
+Test 3a (Email Preprocessing):
+input:
+word_indices  = processEmail('ab abov abil ab footwork ab ab')
+
+output:
+==== Processed Email ====
+
+ab abov abil ab footwork ab ab 
+
+=========================
+word_indices =
+
+   2
+   6
+   3
+   2
+   2
+   2
